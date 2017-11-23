@@ -16,7 +16,7 @@ class SimpleSocket(object):
             # Trying to create a ip_address object
             ip = ipaddress.ip_address(ip_address)
             # Printing de ip_address object to get the ip value instead of the object
-            return(True, print(ip))
+            return(True, ip.__str__())
         except ValueError:
             # If ValueError exception is raised, value for ip is invalid
             return(False, 'Address {} is invalid!'.format(ip_address))
