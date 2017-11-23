@@ -22,6 +22,7 @@ class SimpleSocket(object):
             return(False, 'Address {} is invalid!'.format(ip_address))
 
     def check_port(self, port):
+        # Checks if is a int and a valid port number
         if (type(port) == int) and (port > 0 and port < 65536):
             return(True, port)
         else:
