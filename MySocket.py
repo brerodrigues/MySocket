@@ -29,7 +29,13 @@ class SimpleSocket(object):
             return(False, 'Port \'{}\' is invalid!'.format(port))
         
     def create_socket(self):
-        pass
+        # Checks if everything is right with ip address and port
+        if (self.ip_address[0] == False) or (self.port[0] == False):
+            return(False, 'Cannot create the socket, check ip address or port')
+        else:
+            # Creating a TCP Socket
+            my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            return(True, my_socket)
         
     def connect(self):
         pass
