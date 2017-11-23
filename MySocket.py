@@ -22,7 +22,10 @@ class SimpleSocket(object):
             return(False, 'Address {} is invalid!'.format(ip_address))
 
     def check_port(self, port):
-        pass
+        if (type(port) == int) and (port > 0 and port < 65536):
+            return(True, port)
+        else:
+            return(False, 'Port \'{}\' is invalid!'.format(port))
         
     def create_socket(self):
         pass
