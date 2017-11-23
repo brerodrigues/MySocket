@@ -19,19 +19,19 @@ class SimpleSocket(object):
             return(ip.__str__())
         except ValueError:
             # If ValueError exception is raised, value for ip is invalid
-            return(False, 'Address {} is invalid!'.format(ip_address))
+            return(False)
 
     def check_port(self, port):
         # Checks if is a int and a valid port number
         if (type(port) == int) and (port > 0 and port < 65536):
             return(port)
         else:
-            return(False, 'Port \'{}\' is invalid!'.format(port))
+            return(False)
         
     def create_socket(self):
         # Checks if everything is right with ip address and port
-        if (self.ip_address[0] == False) or (self.port[0] == False):
-            return(False, 'Cannot create the socket, check ip address or port')
+        if (self.ip_address == False) or (self.port == False):
+            return(False)
         else:
             # Creating a TCP Socket
             my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
