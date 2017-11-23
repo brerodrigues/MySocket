@@ -12,7 +12,14 @@ class SimpleSocket(object):
         self.connection_status = False
         
     def check_ip(self, ip_address):
-        pass
+        try:
+            # Trying to create a ip_address object
+            ip = ipaddress.ip_address(ip_address)
+            # Printing de ip_address object to get the ip value instead of the object
+            return(True, print(ip))
+        except ValueError:
+            # If ValueError exception is raised, value for ip is invalid
+            return(False, 'Address {} is invalid!'.format(ip_address))
 
     def check_port(self, port):
         pass
