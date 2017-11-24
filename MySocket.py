@@ -45,9 +45,12 @@ class SimpleSocket(object):
             try:
                 self.socket.connect((self.ip_address, self.port))
                 self.connection_status = True
+                self.connection_message = "Connected"
                 return(True)
             except ConnectionRefusedError:
+                self.connection_message = "Connection Refused"
                 return(False)
+            self.connection_message = "Unknow error in connection"
             return(False)
         
     def send(self):
