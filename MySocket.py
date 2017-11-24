@@ -38,7 +38,16 @@ class SimpleSocket(object):
             return(my_socket)
         
     def connect(self):
-        pass
+        if self.socket == False:
+            return(False)
+        else:
+            try:
+                self.socket.connect((self.ip_address, self.port))
+                self.connection_status = True
+                return(True)
+            except ConnectionRefusedError:
+                return(False)
+            return(False)
         
     def send(self):
         pass
@@ -48,3 +57,4 @@ class SimpleSocket(object):
         
     def disconnect(self):
         pass
+       
