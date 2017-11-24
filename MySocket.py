@@ -10,6 +10,7 @@ class SimpleSocket(object):
         self.port = self.check_port(port)
         self.socket = self.create_socket()
         self.connection_status = False
+        self.connection_message = None
         
     def check_ip(self, ip_address):
         try:
