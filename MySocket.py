@@ -77,4 +77,10 @@ class SimpleSocket(object):
             return(True)
         
     def disconnect(self):
-        pass
+        # Check if it is connected
+        if self.connection_status == False:
+            return(False)
+        else:
+            self.socket.shutdown(socket.SHUT_RDWR)
+            self.socket.close()
+            self.connection_status = False
