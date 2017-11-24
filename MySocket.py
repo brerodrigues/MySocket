@@ -63,7 +63,7 @@ class SimpleSocket(object):
             return(False)
         else:
             # The method sendall will return 'None' if the data was sent
-            if self.socket.sendall(data.encode('ascii')) == None:
+            if self.socket.send(data.encode('ascii')) == None:
                 return(True)
             else:
                 return(False)
