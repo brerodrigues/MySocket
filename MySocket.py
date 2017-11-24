@@ -53,12 +53,17 @@ class SimpleSocket(object):
             self.connection_message = "Unknow error in connection"
             return(False)
         
-    def send(self):
-        pass
-        
+    def send(self, data):
+        if self.connection_status == False:
+            return(False)
+        else:
+            if self.socket.sendall(data.encode('ascii')) == None:
+                return(True)
+            else:
+                return(False)
+                
     def receive(self):
         pass
         
     def disconnect(self):
         pass
-       
