@@ -39,6 +39,7 @@ class SimpleSocket(object):
             return(my_socket)
         
     def connect(self):
+        # If a socket don't exist
         if self.socket == False:
             return(False)
         else:
@@ -47,16 +48,20 @@ class SimpleSocket(object):
                 self.connection_status = True
                 self.connection_message = "Connected"
                 return(True)
+            # If connection is refused
             except ConnectionRefusedError:
                 self.connection_message = "Connection Refused"
                 return(False)
+            # Other exception happened, so fuck it
             self.connection_message = "Unknow error in connection"
             return(False)
         
     def send(self, data):
+        # Check if it is connected
         if self.connection_status == False:
             return(False)
         else:
+            # The method sendall will return 'None' if the data was sent
             if self.socket.sendall(data.encode('ascii')) == None:
                 return(True)
             else:
