@@ -11,6 +11,7 @@ class SimpleSocket(object):
         self.socket = self.create_socket()
         self.connection_status = False
         self.connection_message = None
+        self.received_data = None
         
     def check_ip(self, ip_address):
         try:
@@ -68,7 +69,12 @@ class SimpleSocket(object):
                 return(False)
                 
     def receive(self):
-        pass
+        # Check if it is connected
+        if self.connection_status == False:
+            return(False)
+        else:
+            self.received_data = self.socket.recv(1024)
+            return(True)
         
     def disconnect(self):
         pass
